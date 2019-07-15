@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserInterface } from '../../../interfaces';
-import { PaginationApiService } from './';
+import { PaginationApiService } from './pagination-api.service';
 
 
 @Injectable()
@@ -13,6 +13,7 @@ export class ApiService {
   }
 
   fetchUsers(page): Observable<any> {
+    console.log('fetching users');
     return this.http.get('https://reqres.in/api/users?page=' + page).pipe(map(response => {
       const parsedResponse = JSON.parse(JSON.stringify(response));
       return parsedResponse.data;

@@ -10,7 +10,7 @@ export class PaginationApiService {
   }
 
   fetchPaginationInfo(): Observable<any> {
-    return this.http.get('https://reqres.in/api/users?page=1').pipe(map(response => {
+    return this.http.get('https://reqres.in/api/users').pipe(map(response => {
       console.log('response is: ', response);
       console.log('type of response is: ', typeof(response));
       console.log('stringified response is: ', JSON.stringify(response));

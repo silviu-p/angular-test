@@ -4,13 +4,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { UserInterface } from '../../../../interfaces';
 import { ApiService } from '../../../core/services';
-  //  import { PaginationApiService } from '../../../core/services';
 
 @Component({
   selector: 'app-users-list',
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.css'],
-  providers: [ ApiService ]
+  providers: [ApiService]
 })
 export class UsersListComponent implements OnInit {
 
@@ -19,7 +18,7 @@ export class UsersListComponent implements OnInit {
   pagesCount: number;
 
   constructor(private activatedRoute: ActivatedRoute,
-              private router: Router) {
+    private router: Router) {
   }
 
   ngOnInit() {
@@ -34,7 +33,7 @@ export class UsersListComponent implements OnInit {
       map(data => data.paginationInfo)
     )
       .subscribe(paginationInfo => {
-        // this.pagesCount = paginationInfo.total;
+        this.pagesCount = paginationInfo.total;
       });
   }
 
