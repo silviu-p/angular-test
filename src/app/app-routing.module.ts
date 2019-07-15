@@ -10,11 +10,11 @@ export const routes: Routes = [
 },
 {
   path: 'users',
-  loadChildren: '../modules/users-list/users-list.module#UsersListModule'
+  loadChildren: () => import('../modules/users-list/users-list.module').then(m => m.UsersListModule)
 },
 {
   path: 'user',
-  loadChildren: '../modules/user/user.module#UserModule'
+  loadChildren: () => import('../modules/user/user.module').then(m => m.UserModule)
 }
 ];
 

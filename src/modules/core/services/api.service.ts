@@ -13,7 +13,10 @@ export class ApiService {
   }
 
   fetchUsers(page): Observable<any> {
-    return this.http.get('https://reqres.in/api/users?page=' + page).pipe(map(response => response.json().data));
+    return this.http.get('https://reqres.in/api/users?page=' + page).pipe(map(response => {
+      const parsedResponse = JSON.parse(JSON.stringify(response));
+      return parsedResponse.data;
+    }));
   }
 
   fetchPaginationInfo(): Observable<any> {
@@ -21,7 +24,10 @@ export class ApiService {
   }
 
   fetchUserById(id: number): Observable<UserInterface> {
-    return this.http.get(`https://reqres.in/api/users/${id}`).pipe(map(response => response.json()));
+    return this.http.get(`https://reqres.in/api/users/${id}`).pipe(map(response => {
+      const parsedResponse = JSON.parse(JSON.stringify(response));
+      return parsedResponse;
+    }));
   }
 
 }

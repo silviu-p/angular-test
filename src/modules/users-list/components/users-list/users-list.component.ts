@@ -34,7 +34,7 @@ export class UsersListComponent implements OnInit {
       map(data => data.paginationInfo)
     )
       .subscribe(paginationInfo => {
-        this.pagesCount = paginationInfo.total;
+        // this.pagesCount = paginationInfo.total;
       });
   }
 

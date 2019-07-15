@@ -11,11 +11,16 @@ export class PaginationApiService {
 
   fetchPaginationInfo(): Observable<any> {
     return this.http.get('https://reqres.in/api/users?page=1').pipe(map(response => {
+      console.log('response is: ', response);
+      console.log('type of response is: ', typeof(response));
+      console.log('stringified response is: ', JSON.stringify(response));
+      console.log('parsed stringified response is: ', JSON.parse(JSON.stringify(response)));
+      const parsedResponse = JSON.parse(JSON.stringify(response));
       return {
-        total_pages: response.json().total_pages,
-        per_page: response.json().per_page,
-        total: response.json().total,
-        page: response.json().page
+        total_pages: parsedResponse.total_pages,
+        per_page: parsedResponse.per_page,
+        total: parsedResponse.total,
+        page: parsedResponse.page
       };
     }));
   }
